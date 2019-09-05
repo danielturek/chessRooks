@@ -1,0 +1,640 @@
+\documentclass[12pt,reqno]{amsart}
+
+\usepackage{amsmath,amsthm,amssymb,comment,fullpage}
+%\usepackage{epsf, subfigure, verbatim}
+%\usepackage{euler,palatino}
+%\usepackage{srcltx}
+%\usepackage{amsthm}
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{float}
+%\usepackage{mathrsfs}h}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage[dvips]{graphics}
+\usepackage{epsfig}
+\usepackage{accents}
+\usepackage{float}
+%\usepackage{hyperref, amsmath, amsthm, amsfonts, amscd, flafter,epsf}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,amscd}
+\input amssym.def
+\input amssym.tex
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{breakurl}
+\usepackage{comment}
+\usepackage{mathtools}
+\newcommand{\bburl}[1]{\textcolor{blue}{\url{#1}}}
+
+%\newcommand{\prob}[1]{{\rm Prob}\left(#1\right)}
+\newcommand{\p}[1]{{\rm Prob}\left(#1\right)}
+\newcommand{\E}{\mathbb{E}}
+%\newcommand{\bburl}[1]{\textcolor{blue}{\url{#1}}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+%\usepackage{showkeys}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\newcommand{\emaillink}[1]{\textcolor{blue}{\href{mailto:#1}{#1}}}
+\newcommand{\ind}{\otimes}
+\newcommand{\witi}{\widetilde}
+\newcommand{\V}{\text{{\rm Var}}}
+\renewcommand{\E}{\mathbb{E}}
+\newcommand{\ch}{{\bf 1}}
+\newcommand{\dt}[1]{\witi{\witi #1}}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\lr}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\eqd}{\overset{\footnotesize{d}}{=}}
+\newcommand{\calf}{{\mathcal F}}
+\newcommand{\cal}{\mathcal}
+
+\newcommand{\complexI}{\widehat{i}}
+\newcommand{\quaternionI}{\widehat{i}}
+\newcommand{\quaternionJ}{\widehat{j}}
+\newcommand{\quaternionK}{\widehat{k}}
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+
+\numberwithin{equation}{section}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{exa}[thm]{Example}
+\newtheorem{defi}[thm]{Definition}
+\newtheorem{exe}[thm]{Exercise}
+\newtheorem{que}[thm]{Question}
+\newtheorem{cla}[thm]{Claim}
+\newtheorem{proj}[thm]{Research Project}
+
+\theoremstyle{plain}
+
+\newtheorem{X}{X}[section]
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exmp}[section]{Example}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{conjecture}[thm]{Conjecture}
+\newtheorem{hypothesis}[thm]{Hypothesis}
+\newtheorem{rem}[thm]{Remark}
+%\newtheorem*{hyptheta}[thm]{Hypothesis \ref{montgomery original}$_\theta$}
+%\newtheorem*{hyplog}{Hypothesis \ref{montgomer original}}
+%\newtheorem*{hypsmallo}[thm]{Hypothesis \ref{montgomery original}}
+%\newtheorem*{hypeta}[thm]{Hypothesis 1.10$_{\eta}$}
+%\theoremstyle{definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{rek}[thm]{Remark}
+
+
+%below allows duplication of theorems without renumbering
+%\newenvironment{dup}[1]{\@begintheorem{#1}{\unskip}}{\@endtheorem}
+
+
+\renewcommand\thesection{\arabic{section}}
+
+
+\newcommand{\sumii}[1]{\sum_{#1 = -\infty}^\infty}
+\newcommand{\sumzi}[1]{\sum_{#1 = 0}^\infty}
+\newcommand{\sumoi}[1]{\sum_{#1 = 1}^\infty}
+\newcommand{\eprod}[1]{\prod_p \left(#1\right)^{-1}}
+
+
+\newcommand\st{\text{s.t.\ }}
+\newcommand\be{\begin{equation}}
+\newcommand\ee{\end{equation}}
+\newcommand\bea{\begin{eqnarray}}
+\newcommand\eea{\end{eqnarray}}
+\newcommand\bi{\begin{itemize}}
+	\newcommand\ei{\end{itemize}}
+\newcommand\ben{\begin{enumerate}}
+	\newcommand\een{\end{enumerate}}
+\newcommand\bc{\begin{center}}
+	\newcommand\ec{\end{center}}
+\newcommand\ba{\begin{array}}
+	\newcommand\ea{\end{array}}
+
+
+\def\notdiv{\ \mathbin{\mkern-8mu|\!\!\!\smallsetminus}}
+\newcommand{\done}{\Box} %use in linux
+%\newcommand{\umess}[2]{\underset{(#1)}{\underbrace{#2}}}
+
+
+%%Greek letters
+\newcommand{\gep}{\epsilon}
+\newcommand{\gl}{\lambda}
+\newcommand{\ga}{\alpha}
+\newcommand{\gb}{\beta}
+\newcommand{\gd}{\delta}
+\newcommand{\gG}{\Gamma}
+\newcommand{\gL}{\Lambda}
+\newcommand{\GG}{\Gamma}
+\newcommand{\w}{\omega}
+
+
+%%Boldface letters
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\W}{\mathbb{W}}
+
+
+% Fractions
+\newcommand{\fof}{\frac{1}{4}}  %oneforth
+\newcommand{\foh}{\frac{1}{2}}  %onehalf
+\newcommand{\fot}{\frac{1}{3}}  %onethird
+\newcommand{\fop}{\frac{1}{\pi}}    %1/pi
+\newcommand{\ftp}{\frac{2}{\pi}}    %2/pi
+\newcommand{\fotp}{\frac{1}{2 \pi}} %1/2pi
+\newcommand{\fotpi}{\frac{1}{2 \pi i}}
+
+
+
+
+
+\newcommand{\vars}[2]{ #1_1, \dots, #1_{#2} }
+\newcommand{\ncr}[2]{{#1 \choose #2}}
+
+\newcommand{\twocase}[5]{#1 \begin{cases} #2 & \text{{\rm #3}}\\ #4 &\text{{\rm #5}} \end{cases}}
+\newcommand{\threecase}[7]{#1 \begin{cases} #2 & \text{{\rm #3}}\\ #4 &\text{{\rm #5}}\\ #6 & \texttt{{\rm #7}} \end{cases}}
+\newcommand{\twocaseother}[3]{#1 \begin{cases} #2 & \text{#3}\\ 0 &\text{otherwise} \end{cases}}
+
+%Formatting
+%\renewcommand{\baselinestretch}{1}
+\newcommand{\murl}[1]{\href{mailto:#1}{\textcolor{blue}{#1}}}
+\newcommand{\hr}[1]{\href{#1}{\url{#1}}}
+
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{(#1)}}}
+\newcommand{\fix}[1]{\textcolor{red}{\textbf{\large (#1)\normalsize}}}
+\newcommand{\fixed}[1]{\textcolor{green}{~\\ \textbf{\large #1\normalsize}}\\}
+
+\newcommand{\vectwo}[2]
+{\left(\begin{array}{c}
+                        #1    \\
+                        #2
+                          \end{array}\right) }
+
+
+\newcommand{\mattwo}[4]
+{\left(\begin{array}{cc}
+		#1  & #2   \\
+		#3 &  #4
+	\end{array}\right) }
+
+\newcommand{\matthree}[9]
+{\left(\begin{array}{ccc}
+		#1  & #2 & #3  \\
+		#4 &  #5 & #6 \\
+		#7 &  #8 & #9
+	\end{array}\right) }
+
+%\newcommand{\matfour}[16]
+%{\left(\begin{array}{cccc}
+%                        #1  & #2 & #3 & #4 \\
+%                        #5  & #6 & #7 & #8 \\
+%                        #9  & #10 & #11 & #12 \\
+%                        #13 & #14 & #15 & #16
+%                          \end{array}\right) }
+
+
+%\newcommand{\matfive}[25]
+%{\left(\begin{array}{ccccc}
+%                        #1  & #2 & #3 & #4  & #5 \\
+%                        #6 & #7 &  #8 & #9  & #10 \\
+%                        #11 & #12 & #13 & #14 & #15 \\
+%                        #16 & #17 & #18 & #19 & #20 \\
+%                        #21 & #22 & #23 & #24 & #25
+%                         \end{array}\right) }
+
+\newcommand{\dettwo}[4]
+{\left|\begin{array}{cc}
+		#1  & #2   \\
+		#3 &  #4
+	\end{array}\right| }
+
+\newcommand{\detthree}[9]
+{\left|\begin{array}{ccc}
+		#1  & #2 & #3  \\
+		#4 &  #5 & #6 \\
+		#7 &  #8 & #9
+	\end{array}\right| }
+
+%%%%%%%%%%%%%%%A NEW SET OF COMMANDS %%%%%%%%%%%%
+\DeclareMathOperator{\sgn}{sgn}
+
+\renewcommand \l {\lambda}
+\renewcommand \r {\rho}
+
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\D}{\mathbb{D}}
+\renewcommand{\H}{\mathbb{H}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\curleps}{\mathcal{E}}
+\renewcommand{\Re}[1]{\text{Re}(#1)}
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}[1]{\text{Im}(#1)}
+\newcommand{\cov}{\text{Cov}}
+\newcommand{\var}{\text{Var}}
+\newcommand{\pfrac}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\liminfty}{\lim_{n\rightarrow \infty}}
+\newcommand{\deriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dderiv}[2]{\frac{d #1}{d #2}}
+\newcommand{\tth}{^{\operatorname{th}}}
+
+%rmt commands
+\newcommand{\Trace}{\text{Trace}}
+\newcommand{\Tr}{\text{Tr}}
+\DeclareMathOperator{\tr}{Tr}
+\newcommand{\etr}{\mathbb{E}\;\tr\;}
+\newcommand{\ektr}{\mathbb{E}_k\;\tr\;}
+\newcommand{\ecktr}{\mathbb{E}_k^\C\;\tr\;}
+\newcommand{\ehktr}{\mathbb{E}_k^\H\;\tr\;}
+\newcommand{\Eo}[1]{\underaccent{#1}{\mathbb{E}}}
+\newcommand{\kmat}{b}
+
+%%%%%%%%%%%%%%Commands from Burkhardt, Dewitt, Yang Paper
+\newcommand*{\kernel}{\text{ker}}
+\newcommand*{\image}{\text{Im}}
+\newcommand*{\sls}{\subsetneq ... \subsetneq}
+\newcommand*{\ssn}{\subsetneq}
+\newcommand*{\bull}{$\bullet \, \,$}
+\newcommand*{\short}[3]{0 \longrightarrow #1 \longrightarrow #2 \longrightarrow #3 \longrightarrow 0}
+\newcommand*{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand*{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand*{\reff}[1]{\hyperref[#1]{\ref{#1}}}
+\newcommand*{\pez}[1]{\left( #1\right)}
+\newcommand*{\on}{\operatorname}
+\DeclareMathOperator{\rank}{rank}
+%%%%%%%%%%%%%
+
+%%%%%%COMMANDS FOR THIS PAPER
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclareMathOperator{\prob}{Pr}
+%%%%%%%%%%%%%%%%%
+
+
+
+\title{When Rooks Miss: Probability through Chess}
+
+\author{Steven J. Miller}
+\email{\textcolor{blue}{\href{mailto:sjm1@williams.edu, Steven.Miller.MC.96@aya.yale.edu}{sjm1@williams.edu,Steven.Miller.MC.96@aya.yale.edu}}}
+\address{Department of Mathematics and Statistics, Williams College, Williamstown, MA 01267}
+
+\author{Haoyu Sheng}
+\email{\textcolor{blue}{\href{mailto:hs9@williams.edu}{hs9@williams.edu}}}
+\address{Department of Mathematics and Statistics, Williams College, Williamstown, MA 01267}
+
+\author{Daniel Turek}
+\email{\textcolor{blue}{\href{mailto:dbt1@williams.edu}{dbt1@williams.edu}}}
+\address{Department of Mathematics and Statistics, Williams College, Williamstown, MA 01267}
+
+
+\thanks{The first named author was partially supported by NSF Grant DMS1561945. }
+
+\subjclass[2010]{TBD (primary), TBD (secondary)}
+
+\keywords{Chess Problems, Chebyshev's inequality, Covariances}
+
+\date{\today}
+
+\begin{document}
+
+\begin{abstract}  \end{abstract}
+
+\maketitle
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+Probability as a subject owes a lot to the theory of games; many of its early results were inspired by attempts to analyze the odds of various configurations occurring. What began in contests involving dice or cards has grown tremendously over the centuries, and almost any subject can be the source of a good problem. In this note we concentrate on an extension of a chess question. There is no dearth of great sources for interesting chess problems \textbf{ADD REFERENCES HERE}; we study one of them, the $n$ queens problem, with a twist. The only familiarity with chess we need is that queens move (and hence attack) horizontally, vertically and diagonally while rooks move just horizontally and vertically, and instead of the standard $8 \times 8$ board ours is $n \times n$. We assume the reader is familiar with the basics of probability and combinatorics, specifically that $\ncr{n}{k} = n! / k!(n-k)!$ is the number of ways to choose $k$ objects from $n$ when order does not matter.
+
+The standard definition of the problem is the following: \emph{If we place $n$ queens on an $n\times n$ chessboard, what is the maximum number of pawns that can be placed and not attacked by any queen?} The problem is often tweaked to asking not just for the maximum number of pawns, but how many configurations of $n$ queens realize this. We can immediately convert this to probability questions by asking what is the probability a random configuration leaves the maximum number of squares safe, or what is the expected number of safe squares. While it is trivial to write down an approach to solve the first problem (it can be encoded as a simple linear programming problem), the run-time is tremendous and the optimal number of safe squares is known only for small $n$; starting with $n=1$, the known values are \begin{eqnarray} & &	0,\  0,\  0,\  1,\  3,\  5,\  7,\  11,\  18,\  22,\  30,\  36,\  47,\  56,\  72,\  82,\  97,\  111,\  \nonumber\\ & &  132,\ 145,\  170,\  186,\  216,\  240,\  260,\  290,\  324,\  360,\  381,\  420, \dots\end{eqnarray} though for $n \ge 17$ the values stated are merely probably the correct ones (see \cite{LV1, LV2, OEIS}. We can convert these to the percentage of the board that is safe in the optimal configuration; the percentage starts at zero and is slowly increasing, reaching about 50\% by the time $n=30$; it can trivially be shown to converge to 100\% in the limit.\footnote{Essentially place the $n$ queens in a $\sqrt{n} \times \sqrt{n}$ square in the bottom right corner, which shows that only on the order of $n^{3/2}$ of the $n^2$ squares are attacked.}
+
+%list = {0, 0, 0, 1, 3, 5, 7, 11, 18, 22, 30, 36, 47, 56, 72, 82, 97, 111, 132, 145, 170, 186, 216, 240, 260, 290, 324, 360, 381, 420};
+%percent = {};
+%For[n = 1, n <= Length[list], n++, percent = AppendTo[percent, 100.0 list[[n]]/n^2]]
+%Print[percent]
+%Length[list]
+
+We study a variant which not only turns out to be easy to analyze, but also provides an excellent opportunity to see in action many important concepts in probability, including binary indicator variables, expected values, covariances, Chebyshev's inequality, Stirling's formula ($n! = n^n e^{-n} \sqrt{2\pi n} \left(1 + O(1/n)\right)$), partitioning probabilities, and how to handle algebra to obtain clean limiting answers. (Recall big-Oh notation $f(x) = O(g(x))$ means that there is a $C > 0$ such that $|f(x)| \le C g(x)$.)
+
+\ \\
+
+\noindent \emph{\textbf{Rook Problem:} If $n$ rooks are randomly and uniformly placed on an $n\times n$ chessboard, what is the probability that at least one square is safe, what is the expected number of safe squares, and what is the distribution of the number of safe squares?}
+
+\ \\
+
+It is of course possible that no squares are safe. If we have an $n\times n$ board and want to place $n$ queens, they could attack every square even if there are both rows and columns with no queens. For example, if $n=4$ place the four queens in the corners; no queens are in rows 2 or 3, or columns 2 or 3, but every square is attacked. The situation is very different for rooks, as rooks can only attack horizontally and vertically, while queens also attack diagonally.
+
+For there to be no safe squares, it must be the case that either each row has a rook, or each column has a rook.\footnote{If there are no rooks in the $i$\textsuperscript{th} column and none in the $j$\textsuperscript{th} row, then the square $(i,j)$ is safe. We can bound the probability of a safe square by doubling this probability; to find the exact probability we would then subtract the probability that each row \emph{and} each column has a rook.} Each rook is in a different column with probability $n! / \ncr{n^2}{n}$: there are $n$ choices for the row of the first rook, $n-1$ for the row of the second and so on, giving us $n!$ configurations, and there are $\ncr{n^2}{n}$ ways to place $n$ rooks, with order not mattering. As $\ncr{n^2}{n} \le (n^2)^n/n!$, we have \be \frac{n!}{\ncr{n^2}{n}} \ \le \ \frac{n!^2}{n^{2n}} \ \approx \ \frac{n^{2n} e^{-2n} 2 \pi n}{n^{2n}} \ = \ \frac{2\pi n}{e^{2n}}, \ee which rapidly goes to zero with $n$. Thus the configurations where each row or each column has a rook happen with vanishingly small probability. In particular, this means that with probability quickly approaching 1 we have at least one square safe.
+
+Thus the first part of our question is not too interesting; the second, however, is more involved and it is here that good mathematics and statistics enter.
+
+\ \\
+
+\begin{thm} As $n \to \infty$, the expected number of safe squares in the Rook Problem converges to $n^2/e^2$, so the percentage of safe squares converges to approximately 13.53\%.
+\end{thm}
+
+\ \\
+
+\fix{ADD STUFF ON FLUCTUATIONS -- DO WE THINK IT IS A GAUSSIAN?}
+
+\ \\
+
+The idea of proof is the following. Let $\mathcal{B}$ be a board configuration (i.e., it is the location of $n$ squares on an $n\times n$ board where the rooks are placed), and consider the binary indicator variables \be \twocase{X_{ij}(\mathcal{B}) \ = \ }{1}{if square $(i,j)$ is safe under $\mathcal{B}$}{0}{otherwise.} \ee Each configuration $\mathcal{B}$ occurs with probability $1/\ncr{n^2}{n}$, as we must choose $n$ of the $n^2$ squares for our $n$ rooks.
+
+We compute \be \mu_n \ = \ \sum_{i,j=1}^n \E[X_{ij}(\mathcal{B})], \ \ \ \sigma_n^2 \ = \ \sum_{ij=1}^n \E[X_{ij}(\mathcal{B}) - \mu_n)^2]; \ee note $\mu_n/n^2$ is the average number of safe squares. We then use Chebyshev's inequality to show that the number of safe squares for a random $\mathcal{B}$ is concentrated tightly near the mean, answering our second question. Unfortunately the $X_{ij}$ are not independent, and thus we cannot use the variance of a sum is the sum of the variance. Instead, we expand by using covariances.
+
+In \S\ref{sec:combprelim} we isolate and prove a general combinatorial lemma on ratios of binomial coefficients which is used in calculating the mean and the standard deviation. Doing so allows us to do the computation once, and then we just need to change the values of the parameters for the two cases. We go through the argument in complete detail; this is a major motivations of this paper, as one of our goals is to provide commentary on a very difficult part of mathematics: how does one do the algebra to obtain a nice, simple closed form expression? Such simplifications are not always possible, but when they are there is tremendous value, as we now have exact answers and do not need to resort to simulations. After this, in \S\ref{sec:mainproof} we prove our main result about the limiting percentage of safe squares.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Combinatorial Preliminaries}\label{sec:combprelim}
+
+Our key ingredient in the analysis is the following combinatorial lemma involving ratios of binomial coefficients, which we use to calculate the probability of certain rook configurations (we have $n^2$ squares initially available for the rooks, and then lose $an+b$ due to some constraint).
+
+\begin{lem}\label{lem:keybinomialratio} For any positive integer $a$ and any integer $b$,
+$$\lim_{n\rightarrow \infty} \frac{\ncr{n^2 - an -b}{n}}{\ncr{n^2}{n}}\ =\ \frac{1}{e^a}$$
+\end{lem}
+
+\begin{proof} We have
+\begin{align}
+    \frac{\ncr{n^2 - an -b}{n}}{\ncr{n^2}{n}} &\ = \  \frac{(n^2 - an - b)!}{n!(n^2 - (a+1)n - b)!}  \cdot  \frac{n!(n^2-n)!}{(n^2)!} \nonumber\\
+    &\ = \  \frac{(n^2 - an - b)!}{(n^2 - (a+1)n - b)!}  \cdot  \frac{(n^2-n)!}{(n^2)!} \nonumber\\
+    &\ = \  \frac{(n^2 - n)(n^2 - n - 1) \cdots (n^2 - (a+1)n - (b-1))}{n^2 (n^2 - 1) \cdots  (n^2 - an - (b-1))} \nonumber\\
+    %&\ = \  \frac{(n^2 - n)(n^2 - n - 1) \cdots (n^2 - (a+1)n - (b-1))}{n^2 (n^2 - 1) \cdots  (n^2 - an - (b-1))}   \cdot \frac{\prod_{k=0}^{an+b-1}(1-\frac{n}{n^2 - %k})}{\prod_{k=0}^{an+b-1}(1-\frac{n}{n^2 - k})}\nonumber\\
+    %&\ = \  n^2 \frac{(n^2 - n)(n^2 - n - 1) \cdots (n^2 - an - (b-1))}{(n^2 - n)(n^2 - n - 1) \cdots (n^2 - an - (b-1))} \cdot \prod_{k=0}^{an+b-1}(1-\frac{n}{n^2 - k})\nonumber\\
+    &\ = \ \prod_{k=0}^{an+b-1}\frac{n^2 - n - k}{n^2 - k} \ = \  \prod_{k=0}^{an+b-1}\left(1-\frac{n}{n^2 - k}\right).
+\end{align}
+
+The challenge now is to manipulate the product so that we can obtain a nice limit as $n\to\infty$. Notice we have on the order of $n$ terms, each within a fixed multiple of $1/n$ from 1. Thus we should be thinking that the answer is related to the exponential function, as \be e^x \ = \ \lim_{n\to\infty} \left(1 + \frac{x}{n}\right)^n.\ee This \emph{suggests} how we should attack the algebra; we want to view each term $1 - n/(n^2-k)$ as $1 - 1/n$ plus a \emph{very} small correction, a correction significantly smaller than $1/n$ and so small that it will not contribute, even when raised to the $n$\textsuperscript{th} power. Once we realize this, the following expansion is forced upon us:
+\begin{align}
+    \frac{n}{n^2 - k} &\ = \  \frac{1}{n} + \frac{k}{n^3 -n k}.
+\end{align}
+
+We can often get a good feeling for an expression by looking at extreme cases. Since $k$ is between 0 and $an+b-1$, we have
+\begin{align}\label{eq:firstupperlowerbound}
+   \left(1-\frac{1}{n} - \frac{an+b-1}{n^3 - an^2 - (b-1)n}\right)^{an+b} \ \leq\ \prod_{k=0}^{an+b-1}\left(1-\frac{n}{n^2 - k}\right) \ \le \  \left(1-\frac{1}{n}\right)^{an+b}.
+\end{align}
+Since $a$ and $b$ are fixed integers, the far right is easily analyzed:
+\begin{align}
+  \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an+b} &\ = \  \left(\lim_{n\rightarrow\infty} \left(1-\frac{1}{n}\right)^{n}\right)^a  \cdot  \left(\lim_{n\rightarrow \infty} \left(1-\frac{1}{n}\right)\right)^b \ = \ e^a.
+\end{align}
+
+Similar to above, we have a sense of the size of the factor on the far left: $1 - 1/n$. We pull this factor out, as its behavior to the power $an+b$ is the same as our analysis of the upper bound. If we can just show the remaining factor is extremely close to $1$ then the upper and lower bounds for our product will be close, and we can then take limits as $n\to\infty$. Since
+\begin{align}
+    1-\frac{1}{n} - \frac{an+b-1}{n^3 - an^2 - (b-1)n} &\ = \  \left(1-\frac{1}{n}\right)\left(1 - \frac{an+b-1}{n^3 - an^2 - (b-1)n} \cdot \frac{n}{n-1}\right)\nonumber\\
+    &\ = \  \left(1-\frac{1}{n}\right)\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right),
+\end{align}
+substituting this into the left of \eqref{eq:firstupperlowerbound} yields
+\begin{align}
+   \left(1-\frac{1}{n}\right)^{an+b}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an+b}  \ \le \   \prod_{k=0}^{an+b-1}\left(1-\frac{n}{n^2 - k}\right) \ \le \  \left(1-\frac{1}{n}\right)^{an+b}.
+\end{align}
+
+We only need to find the limit for $\left(1 - \frac{an+b-1}{n^2 - an - (b-1)} \cdot \frac{1}{n-1}\right)^{an}$ as $n\rightarrow \infty$ to find the limit for the left. As we only care about its limit as $n\to\infty$, we can be a bit crude in approximations in finding upper and lower bounds, so long as they have the same limit.
+
+A good upper bound is trivial:
+\begin{align}
+   \lim_{n\rightarrow \infty}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an} \ \le \  \lim_{n\rightarrow \infty} 1^{an}\ =\ 1.
+\end{align}
+
+We thus want a lower bound that tends to 1 as $n\to\infty$. For large $n$ the factor is essentially $1 - a/n^2$, and thus when we raise this to the $n$\textsuperscript{th} power it should tend to 1 (from the definition of the exponential function, we would need to raise it to something on the order of $n^2$ to have a limit that is not 1). Thus we can be very crude in our bounding.\footnote{We could be more careful, and take logarithms, analyze and then exponentiate, but there is no need.} Fix any $c > 0$. Since $a$ is a positive integer, as $n\rightarrow \infty$ we have $\frac{an+b-1}{n^2 - an - (b-1)} \leq \frac{c}{n}$. Thus
+\begin{align}
+    \lim_{n\rightarrow \infty}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}\ > \ \lim_{n\rightarrow \infty} \left(1- \frac{c}{n}\right)^{an} \ = \ \left(\lim_{n\to\infty}\left(1 - \frac{c}{n}\right)^n\right)^a \ = \ e^{-ca}.
+\end{align}
+As this is true for any $c>0$, taking the limit as $c$ tends to zero from above we obtain a lower bound of $e^0 = 1$. Since the upper and lower bounds are equal, by the Squeeze Theorem we obtain
+\begin{align}
+   \lim_{n\rightarrow \infty}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}\ =\ 1,
+\end{align} and therefore
+\be \lim_{n\rightarrow \infty} \frac{\ncr{n^2 - an -b}{n}}{\ncr{n^2}{n}} = \lim_{n\rightarrow \infty}\prod_{k=0}^{an+b-1}\left(1-\frac{n}{n^2 - k}\right) = \frac{1}{e^a}, \ee
+completing the proof. \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proof of Limiting Percentage}\label{sec:mainproof}
+
+Let $S_n(\mathcal{B})$ be the number of safe spaces on an $n\times n$ board when the $n$ rooks are in configuration $\mathcal{B}$ and thus $S_n(\mathcal{B})/n^2$ is the percentage of spots that are safe; therefore \be S_n(\mathcal{B}) \ = \ \sum_{i,j=1}^n X_{ij}(\mathcal{B}). \ee As the $X_{ij}$ are Bernoulli random variables, to calculate their expected values we just need to know the probability it takes on the value 1 (or the value 0). For a square $(i,j)$ to be safe we cannot place a rook in row $i$ or in column $j$; there are $2n-1$ squares in the union of row $i$ and column $j$, and thus the $n$ rooks must be placed in the $n^2 - (2n-1) = (n-1)^2$ remaining spaces on the board. Thus the probability that $(i,j)$ is safe is $\ncr{(n-1)^2}{n} / \ncr{n^2}{n}$. Thus
+\bea \E[X_{ij}]  \ = \ 1 \cdot {\rm Prob}(X_{ij} = 1) + 0 \cdot {\rm Prob}(X_{ij} = 0) \ = \ \frac{\ncr{(n-1)^2}{n}}{\ncr{n^2}{n}} \ =: \ \mu_n.\eea 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Determining the Mean}
+
+The mean of $S_n$ is easily determined (and from that we can get the percentage of safe squares by dividing by $n^2$). By linearity of expectation, and all the random variables being identically distributed,
+\be \E[S_n]\ =\ \sum_{i,j=1}^n \E[X_{ij}] \ = \ n^2 \E[X_{11}] \ = \ n^2 \frac{\ncr{(n-1)^2}{n}}{\ncr{n^2}{n}}, \ee and therefore the expected percentage of the $n\times n$ square that is safe is \be \E[S_n / n^2] \ = \  \frac{\ncr{(n-1)^2}{n}}{\ncr{n^2}{n}} \ = \ \mu_n. \ee
+
+We now use Lemma \ref{lem:keybinomialratio}; as $(n-1)^2 = n^2 - 2n + 1$ we have $a=2$ and $b=-1$, and thus \be \mu \ := \ \lim_{n\to\infty} \mu_n \ = \ \lim_{n\to\infty} \E[S_n / n^2] \ = \  \lim_{n\rightarrow \infty} \frac{\ncr{n^2-2n+1}{n}}{\ncr{n^2}{n}}\ =\ \frac{1}{e^2} \ \approx \ 13.53\%. \ee
+
+It is remarkable that all the binomial ratios interact beautifully and a clean, simple closed form solution is available for the limiting percentage of safe squares when we randomly and uniformly place $n$ rooks on an $n\times n$ board: $\mu = 1/e^2$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Determining the Variance}
+
+We now turn to the next part: how does the percentage of safe squares vary around $1/e^2$? To determine the answer, we need to compute the variance of $S_n/n^2$ or $S_n$:
+\begin{align}\label{eq:varcovarexpansion}
+    \text{Var}(S_n) &\ = \  \sum_{i,j = 1}^n \text{Var}(X_{ij}) + \sum_{i,j,\ell,m=1 \atop (i,j) \neq (\ell,m)}^n\text{Cov}(X_{ij}X_{\ell m}).
+\end{align}
+
+We analyze the two pieces separately. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{The Variance Term}
+
+From the definition of variance,
+\begin{align}
+   \text{Var}\left(X_{ij}\right) &\ = \  \E[X_{ij}^2] - \E[X_{ij}]^2.
+\end{align} As the $X_{ij}$ are binary indicator variables, $\E[X_{ij}^2] = \E[X_{ij}]$ and thus
+\begin{align}
+   \text{Var}\left(X_{ij}\right) &\ = \  \E[X_{ij}] - \E[X_{ij}]^2 \  = \ \mu_n - \mu_n^2.
+\end{align}  Thus the contribution of these terms to the variance of $S_n/n^2$ is \be \frac1{n^2} \sum_{i,j = 1}^n \text{Var}(X_{ij}) \ = \ \frac1{n^2} \cdot n^2 (\mu_n - \mu_n)^2 \ = \ \mu_n - \mu_n^2,\ee which in the limit as $n\to\infty$ is just \be \mu - \mu^2 \ = \ \frac1{e^2} - \frac1{e^4}. \ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{The Covariance Term}
+
+Breaking down the covariances, we have
+\begin{align}
+    \text{Cov}\left(X_{ij}X_{\ell m}\right) &\ = \  \E[\left(X_{ij} - \mu_{ij}\right)\left(X_{\ell m} - \mu_{\ell m}\right)]\nonumber\\
+    &\ = \  \E[X_{ij}X_{\ell m}] - \E[\mu_{\ell m}X_{ij}] - \E[\mu_{ij}X_{\ell m}] + \mu_{ij}\mu_{\ell m}.
+\end{align}
+
+As the random variables are identically distributed and all have expected value $\mu_n$,
+\begin{align}
+    \text{Cov}\left(X_{ij}X_{\ell m}\right) &\ = \  \E[X_{ij}X_{\ell m}] - \mu_n^2.
+\end{align}
+
+As our variables are binary, note $X_{ij}X_{\ell m}(b)$ can be understood as
+\be
+\twocase{X_{ij}X_{\ell m}(\mathcal{B})\ = \ }{1}{if position $(i, j)$ and position $(\ell,m)$ are safe in board configuration $\mathcal{B}$}{0}{otherwise.} \ee
+
+There are thus two cases to consider for the calculation of $\E[X_{ij}X_{lm}]$.
+
+\ \\
+
+\begin{lem}\label{lem:pairsoverlap} Assume the pairs $(i,j)$ and $(\ell, m)$ share either the same row or the same column (they cannot share both as they are distinct points, since $(i,j) \neq (\ell, m)$). Then \be \text{Prob}\left(X_{ij}X_{lm} = 1\right)\ =\ \E[X_{ij} X_{\ell m}] \ = \ \frac{\ncr{(n-1)(n-2)}{n}}{\ncr{n^2}{n}}, \ee and the number of such pairs is $2(n-1)n^2$. \end{lem}
+
+\begin{proof}
+If the two pairs share the same row, there are $\ncr{n}{1}$ ways to choose the row and $\ncr{n}{2}$ ways to choose the column. There are $2!$ ways to assign the columns to $(i,j)$ and $(\ell, m)$, and thus there are $2 \cdot n \cdot n(n-1)/2 = n^2(n-1)$ such pairs. There are the same number of pairs that share a column but not a row, and thus the number of pairs in this case is $2(n-1)n^2$.
+
+What is the probability that $X_{ij} X_{\ell m}(\mathcal{B})$ equals 1 for such a pair? For convenience, let's assume they share a row (so $i=\ell$). We need to place $n$ rooks, none can be in row $i$, and none can be in column $j$ or $m$. We thus have $(n-1) \cdot (n-2)$ squares on the board where we may place the rooks, and the probability all $n$ rooks are in these squares is $\ncr{(n-1)(n-2)}{n} / \ncr{n^2}{n}$. Thus \be \E[X_{ij} X_{\ell m}] \ = \ \frac{\ncr{(n-1)(n-2)}{n}}{\ncr{n^2}{n}}, \ee as claimed, and the contribution from all these pairs is \be 2(n-1)n^2 \frac{\ncr{(n-1)(n-2)}{n}}{\ncr{n^2}{n}} \ = \ 2(n-1)n^2 \frac{\ncr{n^2-3n+2}{n}}{\ncr{n^2}{n}}. \ee
+\end{proof}
+
+\begin{lem}\label{lem:pairsnooverlap} Assume the pairs $(i,j)$ and $(\ell, m)$ are in distinct rows and columns (so $i \neq \ell$ and $j \neq m$). Then \be
+    \text{Prob}\left(X_{ij}X_{lm} = 1\right)\ =\ \E[X_{ij}X_{\ell m}]\ =\ \frac{\ncr{(n-2)^2}{n}}{\ncr{n^2}{n}},
+ \ee and the number of such pairs is $n^2 (n-1)^2$. \end{lem}
+
+\begin{proof} There are $n^2$ ways to choose $(i,j)$, and then $(n - 1)^2$ choices for $(\ell, m)$ so that it is not in the same row or column as $(i,j)$. What is the probability that $X_{ij} X_{\ell m}(\mathcal{B})$ equals 1 for such a pair? We need to place $n$ rooks, none can be in row $i$ or $\ell$, and none can be in column $j$ or $m$. We thus have $(n-2) \cdot (n-2)$ squares on the board where we may place the rooks, and the probability all $n$ rooks are in these squares is $\ncr{(n-2)(n-2)}{n} / \ncr{n^2}{n}$. Thus \be \E[X_{ij} X_{\ell m}] \ = \ \frac{\ncr{(n-2)(n-2)}{n}}{\ncr{n^2}{n}}, \ee as claimed, and the contribution from all these pairs is \be n^2(n-1)^2 \frac{\ncr{(n-2)(n-2)}{n}}{\ncr{n^2}{n}} \ = \ n^2(n-1)^2 \frac{\ncr{n^2-4n+3}{n}}{\ncr{n^2}{n}}. \ee
+\end{proof}
+
+As a consistency check, note the number of pairs from Lemmas \ref{lem:pairsoverlap} and \ref{lem:pairsnooverlap} is \be 2(n-1)n^2 + n^2 (n-1)^2 \ = \ n^2\left((2n-2) + (n^2 - 2n + 1)\right) \ = \ n^2 (n^2 - 1); \ee as expected, this equals the number of distinct pairs $(i,j)$ and $(\ell, m)$.
+
+We can now determine the contribution of the covariance terms in \eqref{eq:varcovarexpansion}:
+\begin{align}
+    \sum_{i,j, \ell, m = 1 \atop (i,j) \neq (\ell,m)}^n \text{Cov}\left(X_{ij}X_{\ell m}\right) &\ = \   \sum_{i,j, \ell, m = 1 \atop (i,j) \neq (\ell,m)}^n \left(\E[X_{ij}\E_{lm}] - \mu_n^2\right) \nonumber\\
+    &\ = \  2(n-1)n^2 \frac{\ncr{(n-1)(n-2)}{n}}{\ncr{n^2}{n}} + n^2(n-1)^2\frac{\ncr{(n-2)^2}{n}}{\ncr{n^2}{n}} - n^2  \cdot  (n^2 - 1)\mu_n^2.
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Variance of $S_n$}
+
+Using the results from the previous subsections, we can write $\text{Var}(S_n)$ as
+\begin{align}
+    \text{Var}(S_n) &\ = \  \sum_{i = 1}^n\sum_{j=1}^n\text{Var}(X_{ij}) + \sum_{i=1}^n\sum_{j=1}^n \sum_{l=1}^n\sum_{m=1, i,j \neq l,m}^n\text{Cov}(X_{ij}X_{lm}) \nonumber\\
+    &\ = \  n^2(\mu_n - \mu_n^2) + 2(n-1)n^2 \frac{\ncr{(n-1)(n-2)}{n}}{\ncr{n^2}{n}} + n^2(n-1)^2\frac{\ncr{(n-2)^2}{n}}{\ncr{n^2}{n}} - n^2  \cdot  (n^2 - 1)\mu_n^2  \nonumber\\
+    &\ = \  n^2(\mu_n - \mu_n^2) + (2n^3 - 2n^2) \frac{\ncr{(n-1)(n-2)}{n}}{\ncr{n^2}{n}} + (n^4-2n^3 + n^2)\frac{\ncr{(n-2)^2}{n}}{\ncr{n^2}{n}} - (n^4 - n^2)\mu_n^2
+\end{align}
+
+As ${\rm Var}(S_n/n^2) = {\rm Var}(S_n)/n^4$, if we divide both sides by $n^4$ we obtain
+\begin{eqnarray}
+ & & \text{Var}(S_n/n^2)\nonumber\\
+&    & = \  \frac{\mu_n - \mu_n^2}{n^2} + \left(\frac{2}{n} - \frac{2}{n^2}\right) \frac{\ncr{n^2 - 3n + 2}{n}}{\ncr{n^2}{n}} + \left(1-\frac{2}{n} + \frac{1}{n^2}\right)\frac{\ncr{n^2-4n+4}{n}}{\ncr{n^2}{n}} - \left(1 - \frac{1}{n^2}\right)\mu_n^2. \nonumber\\
+\end{eqnarray}
+
+We do not need to determine the variance perfectly, only bound it well enough so we can apply Chebyshev's inequality. We use Lemma \ref{lem:keybinomialratio} to evaluate the two ratios of Binomial coefficients; in the first we take $a=3$ and $b=-4$, for a limit of the ratio of $1/e^3$; for the second term we have $a=4, b=b=-4$ and get $1/e^2$. The product $\mu_n^2$ converges to $1/e^2$.
+
+Substituting, we see that the constant term (in $n$) above is zero due to cancelation, and the coefficient of the $1/n$ term, as $n\to\infty$, converges to $2/e^3 - 2/e^4$. As the remaining terms are of size $1/n^2$, we see that for large $n$ \be {\rm Var}(S_n/n^2) \ \approx \ \frac{2}{e^3} \left(1 - \frac1{e}\right) \frac{2}{n}; \ee in particular, for any $\epsilon > 0$ for all $n$ sufficiently large we have \be \sigma_n^2 \ := \ {\rm Var}(S_n/n^2) \ \le \ \frac{(2+\epsilon)(e-1)}{e^3} \frac1{n} \ := \ \frac{C_\epsilon}{n}. \ee
+
+By Chebyshev's inequality, \be {\rm Prob}\left(\left|\frac{S_n}{n^2} - \mu_n\right| \ge k \sigma_n\right) \ \le \ \frac1{k^2}. \ee If we take $k = \log n$ then the probability above converges to zero, and $k \sigma_n \le C_\epsilon \log n / n$ also converges to zero. This means for any fixed $\epsilon' > 0$ that as $n\to\infty$ the probability of $S_n/n^2$ being more than $\epsilon'$ from $\mu_n$ tends to zero; as $\mu_n \to \mu = 1/e^2$, we see that in the limit for almost all boards the percentage of safe squares can be made to be as close to $1/e^2$ as we wish.
+
+The above result is an example of the power of Chebyshev's inequality. Simply by bounding the variance we are able to show that $S_n/n^2$ concentrates on the mean; unfortunately it is not strong enough to say anything about the fluctuations about the mean.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Bibliography}
+
+\begin{thebibliography}{99999} % '2nd argument contains the widest acronym'
+
+\bibitem[LV1]{LV1}
+B. Lemaire and P. Vitushinkiy, \emph{Placing $n$ non dominating queens on the $n \times n$ chessboard, Part I}, French Federation of Mathematical Games, 2011. \bburl{https://www.ffjm.org/upload/fichiers/N_NON_DOMINATING_QUEENS.pdf}.
+
+\bibitem[LV2]{LV2}
+B. Lemaire and P. Vitushinkiy, \emph{Placing $n$ non dominating queens on the $n \times n$ chessboard, Part II}, French Federation of Mathematical Games \fix{FULL REF}
+
+\bibitem[Mi]{Mi}
+S. J. Miller, \emph{The Probability Lifesaver}, Princeton University Press, Princeton, NJ, 2018. \bburl{https://web.williams.edu/Mathematics/sjmiller/public_html/probabilitylifesaver/index.htm}.
+
+\bibitem[OEIS]{OEIS}
+
+OEIS, \emph{Sequence A001366},  \bburl{https://oeis.org/A001366}.
+
+\end{thebibliography}
+
+
+\ \\
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+DELETED
+
+Looking at the limit as $n$ approaches infinity, for the left, we have:
+
+\begin{align}
+  \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an+b}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an+b} &\ = \  \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an}\nonumber\\
+    & \cdot \left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}\nonumber\\
+  & \times \left(1-\frac{1}{n}\right)^{b}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{b}
+\end{align}
+
+Far right...
+
+By limits product rule and power rule, the left becomes:
+
+\begin{align}
+ &\lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an}
+     \cdot \left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}\nonumber\\
+    & \cdot \left(1-\frac{1}{n}\right)^{b}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{b} \nonumber\\
+ &\ = \ \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an} \lim_{n\rightarrow \infty}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}\nonumber\\
+    & \cdot \left(\lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)\right)^b\nonumber\\
+ &\ = \  \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an} \lim_{n\rightarrow \infty}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}   \cdot  1^b\nonumber\\
+&\ = \  \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an} \lim_{n\rightarrow \infty}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}
+\end{align}
+
+and the right becomes:
+
+\begin{align}
+ \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an}  \cdot  \left(1-\frac{1}{n}\right)^b &\ = \   \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an}  \cdot  \left(\lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)\right)^b \nonumber\\
+ &\ = \  \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an}
+\end{align}
+
+Since $\lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{n} = \frac1e$
+
+\begin{align}
+    \lim_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an} \lim_{n\rightarrow \infty}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}  & = \frac{1}{e^a}\lim_{n\rightarrow \infty}\left(1 - \frac{an+b-1}{n^2 - an -
+    (b-1)} \cdot \frac{1}{n-1}\right)^{an}\nonumber\\
+    \text{and lim}_{n\rightarrow \infty}\left(1-\frac{1}{n}\right)^{an} &\ = \  \frac{1}{e^a}
+\end{align}
+
