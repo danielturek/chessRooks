@@ -1,5 +1,8 @@
+.DS_Store
 .Rhistory
 *.aux
+*.bbl
+*.blg
 *.gz
 *.log
 *.out
