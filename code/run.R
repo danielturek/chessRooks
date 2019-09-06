@@ -16,6 +16,9 @@ runMultipleSims(nValues = seq(1, 60, by = 1), nRuns = 20000)
 runMultipleSims(nValues = seq(1, 200, by = 1), nRuns = 1000)
 runMultipleSims(nValues = seq(50, 200, by = 1), nRuns = 50000)
 runMultipleSims(nValues = seq(210, 300, by = 10), nRuns = 50000)
+runMultipleSims(nValues = seq(350, 500, by = 50), nRuns = 50000)
+runMultipleSims(nValues = seq(600, 1000, by = 50), nRuns = 10000)
+
 
 
 ##
@@ -94,6 +97,52 @@ for(nRange in nRangeList) {
 
 
 
+## making plots for manuscript
+
+## FIGURE 1: Percentage of free squares
+setEPS()
+postscript('ms/plot1_percentage_free.eps', width = 5, height = 5)
+combinedFilename <- 'data/combinedResults.rds'
+df <- readRDS(combinedFilename)
+range <- c(20, 500)
+indToUse <- df$n >= range[1] & df$n <= range[2]
+df2 <- df[indToUse, ]
+indToUse <- df2$n %% 20 == 0
+df2 <- df2[indToUse, ]
+plot(df2$n, df2$meanFracFree*100, type = 'l',
+     xlim = c(0, max(df2$n)),
+     xlab = 'n', ylab = 'Percentage of unattacked squares',
+     tcl = -0.3, mgp = c(2.5,.6,0),
+     main = '', cex.axis = 1.2, cex.lab = 1.4)
+abline(h = exp(-2), col = 'red')
+dev.off()
+
+
+
+
+## FIGURE 2: Distribution of free squares about the mean
+setEPS()
+postscript('ms/plot2_fluctuations.eps', width = 5, height = 2.5)
+nValues <- c(50, 100, 500)
+bwValues <- list(.3, .2, 'nrd0')
+par(mfrow = c(1, 3), mai = c(.4, .1, .1, .1))
+for(i in 1:3) {
+    n <- nValues[i]
+    filename <- paste0('data/sim_n', n, '.rds')
+    if(!file.exists(filename)) stop('no simulation results for n = ', n)
+    thisList <- readRDS(filename)
+    percentageFree <- thisList$fracFree * 100
+    plot(density(percentageFree, bw = bwValues[[i]]),
+         bty = 'o', mgp = c(1.5, 0, 0),
+         xlab = paste0('n = ', n), xaxt = 'n',
+         ylab = '', yaxt = 'n',
+         cex.lab = 1.7,
+         main = '')
+    xs <- seq(0, 100, by = 0.01)
+    ys <- dnorm(xs, mean(percentageFree), sd(percentageFree))
+    lines(xs, ys, col = 'red')
+}
+dev.off()
 
 
 

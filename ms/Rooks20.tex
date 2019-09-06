@@ -332,7 +332,7 @@ We study a variant which not only turns out to be easy to analyze, but also prov
 
 \ \\
 
-\noindent \emph{\textbf{Rook Problem:} If $n$ rooks are randomly and uniformly placed on an $n\times n$ chessboard, what is the probability that at least one square is safe, what is the expected number of safe squares, and what is the distribution of the number of safe squares?}
+\noindent \emph{\textbf{Rook Problem:} If $n$ rooks are randomly and uniformly placed on an $n\times n$ chessboard, what is the probability that at least one square is safe, what is the number of safe squares, and what is the distribution of the number of safe squares?}
 
 \ \\
 
@@ -349,15 +349,11 @@ Thus the first part of our question is not too interesting; the second, however,
 
 \ \\
 
-\fix{ADD STUFF ON FLUCTUATIONS -- DO WE THINK IT IS A GAUSSIAN?}
-
-\ \\
-
 The idea of proof is the following. Let $\mathcal{B}$ be a board configuration (i.e., it is the location of $n$ squares on an $n\times n$ board where the rooks are placed), and consider the binary indicator variables \be \twocase{X_{ij}(\mathcal{B}) \ = \ }{1}{if square $(i,j)$ is safe under $\mathcal{B}$}{0}{otherwise.} \ee Each configuration $\mathcal{B}$ occurs with probability $1/\ncr{n^2}{n}$, as we must choose $n$ of the $n^2$ squares for our $n$ rooks.
 
-We compute \be \mu_n \ = \ \sum_{i,j=1}^n \E[X_{ij}(\mathcal{B})], \ \ \ \sigma_n^2 \ = \ \sum_{ij=1}^n \E[X_{ij}(\mathcal{B}) - \mu_n)^2]; \ee note $\mu_n/n^2$ is the average number of safe squares. We then use Chebyshev's inequality to show that the number of safe squares for a random $\mathcal{B}$ is concentrated tightly near the mean, answering our second question. Unfortunately the $X_{ij}$ are not independent, and thus we cannot use the variance of a sum is the sum of the variance. Instead, we expand by using covariances.
+We compute \be \mu_n \ = \ \sum_{i,j=1}^n \E[X_{ij}(\mathcal{B})], \ \ \ \sigma_n^2 \ = \ \sum_{ij=1}^n \E[X_{ij}(\mathcal{B}) - \mu_n)^2]; \ee note $\mu_n/n^2$ is the average number of safe squares \fix{maybe I read this wrong, but is $\mu_n / n^2$ actually the average \emph{fraction} of safe squares? -DT}. We then use Chebyshev's inequality to show that the number of safe squares for a random $\mathcal{B}$ is concentrated tightly near the mean, answering our second question. Unfortunately the $X_{ij}$ are not independent, and thus we cannot use the variance of a sum is the sum of the variance. Instead, we expand by using covariances.
 
-In \S\ref{sec:combprelim} we isolate and prove a general combinatorial lemma on ratios of binomial coefficients which is used in calculating the mean and the standard deviation. Doing so allows us to do the computation once, and then we just need to change the values of the parameters for the two cases. We go through the argument in complete detail; this is a major motivations of this paper, as one of our goals is to provide commentary on a very difficult part of mathematics: how does one do the algebra to obtain a nice, simple closed form expression? Such simplifications are not always possible, but when they are there is tremendous value, as we now have exact answers and do not need to resort to simulations. After this, in \S\ref{sec:mainproof} we prove our main result about the limiting percentage of safe squares.
+In \S\ref{sec:combprelim} we isolate and prove a general combinatorial lemma on ratios of binomial coefficients which is used in calculating the mean and the standard deviation. Doing so allows us to do the computation once, and then we just need to change the values of the parameters for the two cases. We go through the argument in complete detail; this is a major motivation of this paper, as one of our goals is to provide commentary on a very difficult part of mathematics: how does one do the algebra to obtain a nice, simple closed form expression? Such simplifications are not always possible, but when they are there is tremendous value, as we now have exact answers and do not need to resort to simulations. After this, in \S\ref{sec:mainproof} we prove our main result about the limiting percentage of safe squares. We also look at our main results using simulation.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -434,7 +430,7 @@ completing the proof. \end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proof of Limiting Percentage}\label{sec:mainproof}
 
-Let $S_n(\mathcal{B})$ be the number of safe spaces on an $n\times n$ board when the $n$ rooks are in configuration $\mathcal{B}$ and thus $S_n(\mathcal{B})/n^2$ is the percentage of spots that are safe; therefore \be S_n(\mathcal{B}) \ = \ \sum_{i,j=1}^n X_{ij}(\mathcal{B}). \ee As the $X_{ij}$ are Bernoulli random variables, to calculate their expected values we just need to know the probability it takes on the value 1 (or the value 0). For a square $(i,j)$ to be safe we cannot place a rook in row $i$ or in column $j$; there are $2n-1$ squares in the union of row $i$ and column $j$, and thus the $n$ rooks must be placed in the $n^2 - (2n-1) = (n-1)^2$ remaining spaces on the board. Thus the probability that $(i,j)$ is safe is $\ncr{(n-1)^2}{n} / \ncr{n^2}{n}$. Thus
+Let $S_n(\mathcal{B})$ be the number of safe spaces on an $n\times n$ board when the $n$ rooks are in configuration $\mathcal{B}$ and thus $S_n(\mathcal{B})/n^2$ is the percentage of spots that are safe; therefore \be S_n(\mathcal{B}) \ = \ \sum_{i,j=1}^n X_{ij}(\mathcal{B}). \ee As the $X_{ij}$ are Bernoulli random variables, to calculate their expected values we just need to know the probability it takes on the value 1 (or the value 0). For a square $(i,j)$ to be safe we cannot place a rook in row $i$ or in column $j$; there are $2n-1$ squares in the union of row $i$ and column $j$, and thus the $n$ rooks must be placed in the $n^2 - (2n-1) = (n-1)^2$ remaining spaces on the board. Thus the fixprobability that $(i,j)$ is safe is $\ncr{(n-1)^2}{n} / \ncr{n^2}{n}$. Thus
 \bea \E[X_{ij}]  \ = \ 1 \cdot {\rm Prob}(X_{ij} = 1) + 0 \cdot {\rm Prob}(X_{ij} = 0) \ = \ \frac{\ncr{(n-1)^2}{n}}{\ncr{n^2}{n}} \ =: \ \mu_n.\eea 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -447,6 +443,15 @@ The mean of $S_n$ is easily determined (and from that we can get the percentage 
 We now use Lemma \ref{lem:keybinomialratio}; as $(n-1)^2 = n^2 - 2n + 1$ we have $a=2$ and $b=-1$, and thus \be \mu \ := \ \lim_{n\to\infty} \mu_n \ = \ \lim_{n\to\infty} \E[S_n / n^2] \ = \  \lim_{n\rightarrow \infty} \frac{\ncr{n^2-2n+1}{n}}{\ncr{n^2}{n}}\ =\ \frac{1}{e^2} \ \approx \ 13.53\%. \ee
 
 It is remarkable that all the binomial ratios interact beautifully and a clean, simple closed form solution is available for the limiting percentage of safe squares when we randomly and uniformly place $n$ rooks on an $n\times n$ board: $\mu = 1/e^2$.
+
+We study this limiting percentage through simulation, and indeed find this limiting percentage of approximately 13.53\% (Figure \ref{fig:percentage_free}).
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{plot1_percentage_free}
+\caption{Mean percentage of unattacked squares, on an $n \times n$ board.}
+\label{fig:percentage_free}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -476,6 +481,10 @@ From the definition of variance,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{The Covariance Term}
+
+
+\fix{I feel like all the Cov() equations should have a comma between the two X variables.  Covariance is defined as between 2 RVs, and here it looks like the product of 2 RVs. I would suggest writing the Cov() terms instead as: $\text{Cov}\left(X_{ij}, \, X_{\ell m}\right)$. -DT}
+
 
 Breaking down the covariances, we have
 \begin{align}
@@ -545,6 +554,14 @@ By Chebyshev's inequality, \be {\rm Prob}\left(\left|\frac{S_n}{n^2} - \mu_n\rig
 
 The above result is an example of the power of Chebyshev's inequality. Simply by bounding the variance we are able to show that $S_n/n^2$ concentrates on the mean; unfortunately it is not strong enough to say anything about the fluctuations about the mean.
 
+We again turn to simulation, to examine the nature of these fluctuations about the mean.  Simulations suggest that the distribution of free squares is asymptotically Gaussian (Figure \ref{fig:fluctuations}), however we do not attempt to prove this result.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{plot2_fluctuations}
+\caption{Distribution of the percentage of free squares for various board sizes $n$.  Empirical distribution from 10,000 simulations (black), Gaussian density of same mean and variance (red).}
+\label{fig:fluctuations}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
